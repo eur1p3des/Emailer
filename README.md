@@ -5,7 +5,17 @@ This project consists of a python app that allows you to send email messages, wi
 
 The way it works is very easy:
 
-1. We first need to import the required libraries for this program to work.
+1. Before running the code, we need to make sure that some of our gmail settings are active.
+    1. In your gmail account go to manage account.
+    2. Click on the Security tab.
+    
+        ![image](https://user-images.githubusercontent.com/72199195/151318219-b3db0478-be5e-4ba9-817e-0ef53f700949.png)
+    3.  Once there, look for the "Less Secure Apps" option and make sure it is on:
+        ![image](https://user-images.githubusercontent.com/72199195/151317937-8bd15afe-0f5a-436c-abb1-5c049a1b9fbc.png)
+
+You can now procede with the code:
+
+2. We first need to import the required libraries for this program to work.
 ```py
 import smtplib
 import ssl
@@ -15,7 +25,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
 from getpass import getpass
 ```
-2. We then define the basic information for our email message
+3. We then define the basic information for our email message
 ```py
 # Define basic attributes
 from_addr = input("Please enter your email address: ")
@@ -35,7 +45,7 @@ content = '\n'.join(lines)
 # Asking for the attachment name
 filename = input("Please input the full path of the file you want to send: ")
 ```
-3. The next step is to define which server we are going to use to send the email (Gmail or Outlook):
+4. The next step is to define which server we are going to use to send the email (Gmail or Outlook):
 ```py
 # Defining the mail server and the port
 server1 = 'smtp.gmail.com'
@@ -55,7 +65,7 @@ else:
     port = port2
     print('You have chosen ', server, ' that operates on the port: ', port)
 ```
-4. We can now create our email structure:
+5. We can now create our email structure:
 ```py
 # Build the message object
 msg = MIMEMultipart()
@@ -75,7 +85,7 @@ msg.attach(part)
 #Create a context for the ssl connection
 context = ssl.create_default_context()
 ```
-5. It is finally time to send the email
+6. It is finally time to send the email
 ```py
 #Send mail
 print('Sending mail')
